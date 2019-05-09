@@ -1,10 +1,20 @@
-export default function (state = { value: "bara" }, action) {
-  console.log(action)
-  console.log(state)
+import {FOO_TYPE} from "./actions"
+import typeToReducer from 'type-to-reducer';
 
-  if (action.type === "FOO_FULFILLED") {
-    return { value: action.payload }
-  } else {
-    return state;
+const fooReducer = typeToReducer({
+  [FOO_TYPE]: {
+    PENDING: () => ({
+      value: "Pending...."
+    }),
+    REJECTED: (state, action) => ({
+      isRejected: true,
+      error: action.payload
+    }),
+    FULFILLED: (state, action) => ({
+      isFulfilled: true,
+      value: action.payload
+    })
   }
-} 
+}, {value: "Initial Value"});
+
+export default fooReducer;

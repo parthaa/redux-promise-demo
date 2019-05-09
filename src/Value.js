@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import foo from "./actions"
+import { foo } from "./actions"
 
 const myComponent = (props) => {
   return (

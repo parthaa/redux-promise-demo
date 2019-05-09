@@ -1,10 +1,17 @@
-export default function () {
+const FOO_TYPE = 'FOO';
+
+const foo = () => {
   return {
-    type: 'FOO',
+    type: FOO_TYPE,
     payload: new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve('foo');
+        resolve('Completed');
       }, 3000);
     })
   }
+}
+
+export {
+  FOO_TYPE,
+  foo
 }
